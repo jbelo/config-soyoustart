@@ -1,0 +1,4 @@
+kernel_source_directory: linux-3.14.32
+kernel_source_archive: "{{ kernel_source_directory }}.tar.gz"
+kernel_source_url: https://cdn.kernel.org/pub/linux/kernel/v3.x/{{ kernel_source_archive }}
+ovh_config_url: ftp://ftp.ovh.net/made-in-ovh/bzImage/3.14.32/config-3.14.32-xxxx-grs-ipv6-64

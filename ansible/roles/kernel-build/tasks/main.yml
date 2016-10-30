@@ -1,0 +1,64 @@
+---
+
+- name: Download kernel source
+  get_url:
+    url: "{{ kernel_source_url }}"
+    dest: /usr/src/
+    timeout: 20
+  tags: kernel-build
+
+- name: Expand kernel source archive
+  unarchive:
+    src: /usr/src/{{ kernel_source_archive }}
+    dest: /usr/src/
+    copy: no
+  tags: kernel-build
+
+#- name: Download OVH kernel config
+#  get_url:
+#    url: "{{ ovh_config_url }}"
+#    dest: /usr/src/.config
+#    timeout: 20
+#  tags: kernel-build
+
+- name: Download OVH kernel config
+  shell: wget {{ ovh_config_url }} -O {{ kernel_source_directory }}/.config
+  args:
+    creates: /usr/src/{{ kernel_source_directory }}/.config
+    chdir: /usr/src/
+  tags: kernel-build
+
+- name: Install 'gcc'
+  apt:
+    name: gcc
+  tags: kernel-build
+
+- name: Install 'make'
+  apt:
+    name: make
+  tags: kernel-build
+
+- name: Install 'git'
+  apt:
+    name: git
+  tags: kernel-build
+
+- name: Install 'libssl-dev'
+  apt:
+    name: libssl-dev
+  tags: kernel-build
+
+- name: Install 'libncurses5-dev'
+  apt:
+    name: libncurses5-dev
+  tags: kernel-build
+
+- name: Install 'flex'
+  apt:
+    name: flex
+  tags: kernel-build
+
+- name: Install 'bison'
+  apt:
+    name: bison
+  tags: kernel-build

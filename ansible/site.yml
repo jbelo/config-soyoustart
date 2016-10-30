@@ -1,0 +1,18 @@
+---
+- name: Ansible setup
+  hosts: soyoustart
+  become: true
+  gather_facts: false
+
+  tasks:
+    - name: install python 2
+      raw: test -e /usr/bin/python || (apt -y update && apt install -y python-minimal)
+
+- name: Top level play
+  hosts: soyoustart
+  become: true
+  roles:
+    - { role: java }
+    - { role: robdyke.ant, ant_version_major: 1, ant_version_minor: 9, ant_version_patch: 7 }
+    - { role: tools }
+    - { role: kernel-build }

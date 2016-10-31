@@ -28,37 +28,30 @@
     chdir: /usr/src/
   tags: kernel-build
 
-- name: Install 'gcc'
+- name: Install packages
   apt:
-    name: gcc
-  tags: kernel-build
-
-- name: Install 'make'
-  apt:
-    name: make
-  tags: kernel-build
-
-- name: Install 'git'
-  apt:
-    name: git
-  tags: kernel-build
-
-- name: Install 'libssl-dev'
-  apt:
-    name: libssl-dev
-  tags: kernel-build
-
-- name: Install 'libncurses5-dev'
-  apt:
-    name: libncurses5-dev
-  tags: kernel-build
-
-- name: Install 'flex'
-  apt:
-    name: flex
-  tags: kernel-build
-
-- name: Install 'bison'
-  apt:
-    name: bison
+    name: "{{ item }}"
+  with_items:
+    - gcc
+    - make
+    - git
+    - libssl-dev
+    - libncurses5-dev
+    - flex
+    - bison
+    - python-dev
+    - libelf-dev
+    - libdw-dev
+    - libnewt-dev
+    - libunwind-dev
+    - libaudit-dev
+    - libslang2-dev
+    - binutils-dev
+    - libnuma-dev
+    - libperl-dev
+    - libpython-dev
+    - libgtk2.0-dev
+    - libunwind-dev
+    - libunwind-setjmp0-dev
+    - libiberty-dev
   tags: kernel-build

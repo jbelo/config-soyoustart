@@ -6,13 +6,17 @@
   tags: tools
 
 
-- name: Install 'linux-tools', includes 'perf'
-  apt:
-    name: linux-tools-common
-  tags: tools
+#- name: Install 'linux-tools', includes 'perf'
+#  apt:
+#    name: linux-tools-common
+#  tags: tools
 
-- name: Install 'linux-tools-generic', includes 'perf'
-  apt:
-    name: linux-tools-generic
-  tags: tools
+#- name: Install 'linux-tools-generic', includes 'perf'
+#  apt:
+#    name: linux-tools-generic
+#  tags: tools
 
+- name: Install 'sysstat' package (sar, pidstat, iostat, ...)
+  apt:
+    name: sysstat
+  tags: tools

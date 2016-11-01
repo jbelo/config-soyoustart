@@ -28,6 +28,12 @@
     chdir: /usr/src/
   tags: kernel-build
 
+- name: Replace perf config file
+  copy:
+    src: Makefile.perf
+    dest: /usr/src/{{ kernel_source_directory }}/tools/perf/Makefile.perf
+  tags: kernel-build, now
+
 - name: Install packages
   apt:
     name: "{{ item }}"
